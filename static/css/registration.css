@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Uchen&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Uchen', serif;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+}
+
+.root {
+    border-radius: 4px;
+    padding: 30px 40px 50px;
+    background-color: white;
+    -moz-box-shadow: 0 0 3px #ccc;
+    -webkit-box-shadow: 0 0 3px #ccc;
+    box-shadow: 0 0 3px #ccc;
+}
+
+.root input {
+    font-family: 'Uchen', serif;
+    font-weight: 500;
+    font-size: 17px;
+    margin-bottom: 10px;
+    border: 1px solid darkgray;
+    border-radius: 3px;
+    padding: 7px;
+    height: 20px;
+    width: 300px;
+}
+
+.button-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+#login-button {
+    font-weight: bold;
+    color: white;
+    margin-top: 8px;
+    font-size: 14px;
+    background-color: #0095F6;
+    border: none;
+    padding: 8px 11px 8px 11px;
+    border-radius: 4px;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+}

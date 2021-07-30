@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ profile.user.username }} {% endblock %}
+
+{% block content %}
+    <div class="detail-content">
+        {% if profile.photo %}
+            <img src="{{ profile.photo.url }}" alt="jopa">
+        {% endif %} 
+        <p>{{ profile.bio }}</p>
+    </div>
+{% endblock %}

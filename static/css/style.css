@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Uchen&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    font-family: 'Qahiri', sans-serif;
+}
+
+header {
+    color: whitesmoke;
+    text-align: center;
+    padding: 20px;
+    font-weight: 700;
+    background: rgb(253,29,29);
+    background: -moz-linear-gradient(90deg, rgba(253,29,29,1) 5%, rgba(119,58,180,1) 63%, rgba(252,176,69,1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(253,29,29,1) 5%, rgba(119,58,180,1) 63%, rgba(252,176,69,1) 100%);
+    background: linear-gradient(90deg, rgba(253,29,29,1) 5%, rgba(119,58,180,1) 63%, rgba(252,176,69,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fd1d1d",endColorstr="#fcb045",GradientType=1);
+}
+
+header a {
+    font-size: 40px;
+    font-family: 'Uchen', serif;
+    font-weight: 600;
+    color: #ffffff;
+    transition: .5s;
+}
+
+header a:hover {
+    color: #0095F6;
+}
+
+header .auth{
+    font-size: 16px;
+}
+
+.content {
+    display: flex;
+}
+
+.sidebar {
+    width: 25%;
+    height: 100vh;
+}
+
+.chat-content {
+    width: 75%;
+    height: 100vh;
+}
+
+.search-form {
+    margin: 0 0 10px 10px;
+    padding: 5px;
+    border: none;
+}
+
+.search-form input {
+    margin-top: 10px;
+}
+
+.chat-list {
+    margin: 10px 0 0;
+    padding: 5px;
+    border: 1px solid #F6FFF5;
+    -moz-box-shadow: 0 0 3px #ccc;
+    -webkit-box-shadow: 0 0 3px #ccc;
+    box-shadow: 0 0 3px #ccc;
+    border-radius: 10px;
+    font-size: 24px;
+    font-weight: 600;
+    transition: .5s;
+}
+
+.chat-list:hover {
+    background-color: #fff;
+}
+
+.chat-list a {
+    color: #000
+}
+
+.detail-content {
+    padding-top: 20px;
+    margin: 0 auto;
+    width: 70%;
+    height: 100vh;
+}
+
+.message-box {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    width: 300px;
+    padding: 9px 10px 7px 17px;
+    background-color: #fff;
+    position: relative;
+    word-wrap: break-word
+}
+
+.message-box .message-text {
+    padding: 3px;
+}
+
+.message-box .time {
+    position: absolute;
+    bottom: 0;
+    right: 14px;
+}
+
+.chat-search-form{
+    padding: 20px 0 0;
+}
+
+.chat-search-form form {
+    border-radius: 4px;
+    padding: 5px;
+    background-color: white;
+    -moz-box-shadow: 0 0 3px #ccc;
+    -webkit-box-shadow: 0 0 3px #ccc;
+    box-shadow: 0 0 3px #ccc;
+}
+
+.chat-search-form form input{
+    height: 25px;
+    border-radius: 5px;
+    width: 80%;
+}
+
+.search-button {
+    font-weight: bold;
+    color: white;
+    margin-top: 8px;
+    font-size: 14px;
+    background-color: #0095F6;
+    border: none;
+    padding: 5px 11px 5px 11px;
+    border-radius: 4px;
+}

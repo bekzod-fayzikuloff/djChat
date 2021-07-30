@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %} Chat {% endblock %}
+
+{% block content %}
+    <div class="content">
+
+        <div class="sidebar">
+            <div class="chat-search-form">
+                <form action="{% url 'chat:search_result' %}" method="get">
+                    <input name="q" type="text" placeholder="Search...">
+                    <button class="search-button" type="submit">Search</button>
+                </form>
+            </div>
+
+            {% for member_datum in member_data %}
+                <div class="chat-list">
+                    <a href="{{ member_datum.chat.get_absolute_url }}">{{ member_datum.chat.name }}</a>
+                </div>
+            {% endfor %}
+
+        </div>
+
+        <div class="chat-content"></div>
+    </div>
+
+{% endblock %}

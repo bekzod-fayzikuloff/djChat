@@ -1,0 +1,13 @@
+<div class="root-message">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="text" name="message" value="message" hidden>
+
+        {% for field in message_form %}
+            {{ field }}
+        {% endfor %}
+        <div class="button-wrapper">
+            <button id="send-button" type="submit">Send</button>
+        </div>
+    </form>
+</div>

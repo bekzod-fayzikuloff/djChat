@@ -1,0 +1,10 @@
+<header>
+    <a href="{% url 'chat:home' %}"><p>SimpleChat</p></a>
+
+    {% if user.is_authenticated %}
+        <a class="auth" href="{% url 'account_logout' %}">LogOut</a>
+    {% else %}
+        <a class="auth" href="{% url 'account_login' %}">LogIn</a>
+    {% endif %}
+
+</header>

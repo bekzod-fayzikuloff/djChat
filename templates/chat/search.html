@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %} SearchChat {% endblock %}
+
+{% block content %}
+    <div class="detail-content">
+        {% for chat in chats %}
+            <div class="chat-list">
+                <a href="{{ chat.get_absolute_url }}">{{ chat.name }}</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
