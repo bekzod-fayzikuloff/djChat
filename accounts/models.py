@@ -33,3 +33,39 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
+
+class MessagePrivate(models.Model):
+    text = models.TextField('Сообщение', max_length=2000)
+    photo = models.ImageField('Изображение',
+                              upload_to='private/messages/%Y/%m/%d',
+                              blank=True)
+    created = models.DateTimeField('Создан', auto_now_add=True)
+    updated = models.DateTimeField('Изменен', auto_now=True)
+
+    class Meta:
+        verbose_name = 'Сообщение'
+        verbose_name_plural = 'Сообщения'
+
+    def __str__(self):
+        return self.text[: 10]
+
+
+class MessageReference(models.Model):
+    message_from = models.ForeignKey(User,
+                                     verbose_name='Отправитель',
+                                     related_name='message_from',
+                                     on_delete=models.PROTECT)
+    message = models.ForeignKey(MessagePrivate,
+                                verbose_name='Сообщение',
+                                on_delete=models.CASCADE)
+    message_to = models.ForeignKey(User,
+                                   verbose_name='Получатель',
+                                   related_name='message_to',
+                                   on_delete=models.PROTECT)
+
+    class Meta:
+        verbose_name = 'Личное сообщение'
+        verbose_name_plural = 'Личные сообщения'
+
+    def __str__(self):
+        return f'{self.message_from.username}'

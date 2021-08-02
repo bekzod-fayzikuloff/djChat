@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ profile.user.username }} {% endblock %}
+
+{% block content %}
+    <div class="detail-content">
+        {% for message in messages %}
+            <div class="message-box">
+                <a href="#"><span>{{ message.message_from.username }}</span></a>
+                <hr>
+                {% if message.message.photo %}
+                    <div id="message-image"><a href="{{ message.message.photo.url }}"><img class="message-photo"
+                                                                                           src="{{ message.message.photo.url }}"
+                                                                                           alt="message"></a></div>
+                {% endif %}
+                <p class="message-text">{{ message.message.text }}</p>
+                <p class="time">{{ message.message.created|time:"H:i" }}</p>
+            </div>
+        {% endfor %}
+        <div class="root-message">
+            <div class="message-wrapper">
+                <div style="margin-left: 5px ;width: 50px">
+                    <p id="image-select"></p>
+                </div>
+                <div style="width: 100%">
+                    <form enctype="multipart/form-data" id="send-message" action="" method="POST" name="message">
+                        {% csrf_token %}
+                        <label>
+                            <input type="text" name="message" value="message" hidden>
+                        </label>
+
+                        {% for field in form %}
+                            {{ field }}
+                        {% endfor %}
+                        <div class="button-wrapper">
+                            <button id="send-button" type="submit">Send</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="member-leave">
+                    <p><a href="#">&equiv;</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.onload = () => {
+            window.scrollTo(0, document.body.scrollHeight);
+        }
+        window.onbeforeunload = () => {
+            window.scrollTo(0, document.body.scrollHeight);
+        }
+
+        document.querySelector('#image-select').addEventListener('click', () => {
+            document.querySelector('.message-image-input').click()
+        })
+    </script>
+
+{% endblock %}
