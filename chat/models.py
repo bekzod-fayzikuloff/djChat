@@ -10,6 +10,9 @@ class Message(models.Model):
                               related_name='message',
                               on_delete=models.CASCADE)
     text = models.TextField('Сообщение', max_length=2000)
+    photo = models.ImageField('Изображение',
+                              upload_to='messages/%Y/%m/%d',
+                              blank=True)
     created = models.DateTimeField('Создан', auto_now_add=True)
     updated = models.DateTimeField('Изменен', auto_now=True)
     to_chat = models.ForeignKey('Chat',

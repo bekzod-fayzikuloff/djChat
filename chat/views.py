@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q
+from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import ListView
+from django.views import View
 
 from .models import Chat, Message, Member
 from .forms import MemberChatForm, MessageSendForm
@@ -11,22 +11,29 @@ from . import services
 @login_required
 def index(request):
     member_data = services.get_user_chats(request.user)
+    if request.method == 'GET':
+        queryset = services.chat_search_get_method(request=request)
+        if request.is_ajax():
+            return JsonResponse({'chats': queryset}, safe=False)
     return render(request, 'chat/index.html', {'member_data': member_data})
 
 
 @login_required
 def chat_detail(request, slug):
+    """ Chat detail view """
     chat = get_object_or_404(Chat, slug=slug)
     chat_messages = services.get_chat_messages(chat_slug=slug)
     is_member = services.is_chat_member(chat, request.user)
     if request.method == 'POST':
-        if 'message' in request.POST:
-            message_form = MessageSendForm(request.POST, prefix='message')
+
+        if 'message' in request.POST:  # processing a request for a message form
+            message_form = MessageSendForm(request.POST, request.FILES, prefix='message')
             if message_form.is_valid():
                 new_message = message_form.save(commit=False)
                 services.link_message(message=new_message, owner=request.user, to_chat=chat).save()
                 return redirect(chat.get_absolute_url())
-        elif 'member' in request.POST:
+
+        elif 'member' in request.POST:  # processing a request for a member form
             member_form = MemberChatForm(request.POST, prefix='member')
             if member_form.is_valid():
                 new_member = member_form.save(commit=False)
@@ -47,14 +54,10 @@ def chat_detail(request, slug):
                   )
 
 
-class SearchChatView(ListView):
-    model = Chat
-    template_name = 'chat/search.html'
-    context_object_name = 'chats'
+class MemberLeaveView(View):
 
-    def get_queryset(self):
-        query = self.request.GET.get('q')
-        object_list = Chat.objects.filter(
-            Q(name__icontains=query) | Q(description__icontains=query) | Q(slug__icontains=query)
-        )
-        return object_list
+    def get(self, request, *args, **kwargs):
+        chat = get_object_or_404(Chat, slug=kwargs.get('chat_slug'))
+        member = get_object_or_404(Member, user_id=kwargs.get('pk'), chat=chat)
+        member.delete()
+        return redirect(chat.get_absolute_url())

@@ -18,10 +18,7 @@ header {
     text-align: center;
     padding: 20px;
     font-weight: 700;
-    background: rgb(253,29,29);
-    background: -moz-linear-gradient(90deg, rgba(253,29,29,1) 5%, rgba(119,58,180,1) 63%, rgba(252,176,69,1) 100%);
-    background: -webkit-linear-gradient(90deg, rgba(253,29,29,1) 5%, rgba(119,58,180,1) 63%, rgba(252,176,69,1) 100%);
-    background: linear-gradient(90deg, rgba(253,29,29,1) 5%, rgba(119,58,180,1) 63%, rgba(252,176,69,1) 100%);
+    background: #17212B;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fd1d1d",endColorstr="#fcb045",GradientType=1);
 }
 
@@ -65,6 +62,7 @@ header .auth{
     margin-top: 10px;
 }
 
+
 .chat-list {
     margin: 10px 0 0;
     padding: 5px;
@@ -97,7 +95,7 @@ header .auth{
     margin-top: 10px;
     margin-bottom: 20px;
     border-radius: 20px;
-    width: 300px;
+    width: 40%;
     padding: 9px 10px 7px 17px;
     background-color: #fff;
     position: relative;
@@ -133,6 +131,15 @@ header .auth{
     width: 80%;
 }
 
+.chat-search-form form:hover {
+    border-radius: 4px;
+    padding: 5px;
+    background-color: white;
+    -moz-box-shadow: 0 0 3px #585B5D;
+    -webkit-box-shadow: 0 0 3px #585B5D;
+    box-shadow: 0 0 3px #585B5D;
+}
+
 .search-button {
     font-weight: bold;
     color: white;
@@ -143,3 +150,27 @@ header .auth{
     padding: 5px 11px 5px 11px;
     border-radius: 4px;
 }
+
+.chat-content {
+    margin-left: 12px;
+    border-left: 2px solid #17212B;
+    padding-top: 10px;
+    padding-left: 30px;
+}
+
+.search {
+    width: 80%;
+    background-color: #fff;
+
+}
+
+.search:hover {
+    -moz-box-shadow: 0 0 3px #585B5D;
+    -webkit-box-shadow: 0 0 3px #585B5D;
+    box-shadow: 0 0 3px #585B5D;
+}
+
+.member {
+    margin-left: 10px;
+}
+

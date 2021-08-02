@@ -10,8 +10,12 @@
                 <div class="message-box">
                     <a href="{% url 'users:user_profile' message.owner.pk %}"><span>{{ message.owner.username }}</span></a>
                     <hr>
+                    {% if message.photo %}
+                        <div id="message-image"><a href="{{ message.photo.url }}"><img class="message-photo" src="{{ message.photo.url }}" alt="message"></a></div>
+                    {% endif %}
                     <p class="message-text">{{ message.text }}</p>
                     <p class="time">{{ message.created|time:"H:i" }}</p>
+
                 </div>
             {% endfor %}
         </div>
@@ -23,7 +27,7 @@
                 <input type="text" name="member" value="member" hidden>
 
                 {{ member_form.as_p }}
-                <button type="submit">SignUp</button>
+                <button class="search-button member" type="submit">Login to Chat</button>
             </form>
         {% endif %}
     </div>
@@ -35,6 +39,10 @@
         window.onbeforeunload = () => {
             window.scrollTo(0, document.body.scrollHeight);
         }
+
+        document.querySelector('#image-select').addEventListener('click', () => {
+            document.querySelector('#id_message-photo').click()
+        })
     </script>
 
 {% endblock %}

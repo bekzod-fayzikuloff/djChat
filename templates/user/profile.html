@@ -3,10 +3,26 @@
 {% block title %} {{ profile.user.username }} {% endblock %}
 
 {% block content %}
-    <div class="detail-content">
-        {% if profile.photo %}
-            <img src="{{ profile.photo.url }}" alt="jopa">
-        {% endif %} 
-        <p>{{ profile.bio }}</p>
+    <div class="detail-content profile">
+
+        <div class="profile-image-block">
+            {% if profile.photo %}
+                <a href="{{ profile.photo.url }}"><img class="user-profile-photo" src="{{ profile.photo.url }}" alt="jopa"></a>
+            {% endif %}
+        </div>
+
+        <div class="profile-description">
+            <div class="profile-username">
+                <p>{{ profile.user.username }}</p>
+            </div>
+            <hr>
+            <div class="profile-bio">
+                <p>{{ profile.bio }}</p>
+                {% if this_profile_user %}
+                    <a href="#">start dialog</a>
+                {% endif %}
+            </div>
+        </div>
     </div>
+    <script></script>
 {% endblock %}

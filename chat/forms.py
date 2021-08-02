@@ -13,8 +13,9 @@ class MessageSendForm(forms.ModelForm):
 
     class Meta:
         model = models.Message
-        fields = ['text']
+        fields = ['text', 'photo']
         widgets = {
-            'text': forms.TextInput
+            'text': forms.TextInput,
+            'photo': forms.FileInput(attrs={'class': 'message-image-input'})
         }
 
