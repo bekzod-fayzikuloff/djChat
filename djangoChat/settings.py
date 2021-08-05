@@ -31,13 +31,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'chat.apps.ChatConfig',
-    'accounts.apps.AccountsConfig',
     # 3rd party
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.vk',
+    'accounts.apps.AccountsConfig',
+    'chat.apps.ChatConfig',
 ]
 
 MIDDLEWARE = [

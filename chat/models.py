@@ -1,3 +1,4 @@
+import os
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
@@ -13,6 +14,9 @@ class Message(models.Model):
     photo = models.ImageField('Изображение',
                               upload_to='messages/%Y/%m/%d',
                               blank=True)
+    voice = models.FileField('Голосовое',
+                             upload_to='audio/%Y/%m/%d',
+                             blank=True)
     created = models.DateTimeField('Создан', auto_now_add=True)
     updated = models.DateTimeField('Изменен', auto_now=True)
     to_chat = models.ForeignKey('Chat',
@@ -23,6 +27,9 @@ class Message(models.Model):
     class Meta:
         verbose_name = 'Message'
         verbose_name_plural = 'Messages'
+
+    def filename(self):
+        return os.path.basename(self.voice.name)
 
     def __str__(self):
         return f'{self.pk}: {self.owner.first_name}'
@@ -65,3 +72,4 @@ class Chat(models.Model):
 
     def __str__(self):
         return self.name
+

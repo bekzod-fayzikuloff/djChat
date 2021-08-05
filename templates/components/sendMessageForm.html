@@ -18,8 +18,20 @@
                 </div>
             </form>
         </div>
-        <div class="member-leave">
-            <p><a href="{% url 'chat:member_leave' user.pk chat.slug %}">&equiv;</a></p>
-        </div>
+{#        <div class="member-leave">#}
+{#            <p><a href="{% url 'chat:member_leave' user.pk chat.slug %}">&equiv;</a></p>#}
+{#        </div>#}
+
+    <nav role="navigation">
+  <ul>
+    <li <a href="#">&equiv;</a>
+      <ul class="dropdown">
+        <li><a href="#">Sub-1</a></li>
+        <li><a href="{% url 'chat:member_leave' user.pk chat.slug %}">Leave</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
     </div>
 </div>

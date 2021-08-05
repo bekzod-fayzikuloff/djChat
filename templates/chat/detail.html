@@ -11,7 +11,12 @@
                     <a href="{% url 'users:user_profile' message.owner.pk %}"><span>{{ message.owner.username }}</span></a>
                     <hr>
                     {% if message.photo %}
-                        <div id="message-image"><a href="{{ message.photo.url }}"><img class="message-photo" src="{{ message.photo.url }}" alt="message"></a></div>
+                        <div id="message-image"><a href="{{ message.photo.url }}"><img class="message-photo"
+                                                                                       src="{{ message.photo.url }}"
+                                                                                       alt="message"></a></div>
+                    {% endif %}
+                    {% if message.voice %}
+                        <video autoplay="autoplay" src="{{ message.voice.url }}"></video>
                     {% endif %}
                     <p class="message-text">{{ message.text }}</p>
                     <p class="time">{{ message.created|time:"H:i" }}</p>

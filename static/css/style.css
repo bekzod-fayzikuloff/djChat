@@ -174,3 +174,65 @@ header .auth{
     margin-left: 10px;
 }
 
+nav {
+    font-family: monospace;
+
+}
+
+ul {
+    background: #ffffff;
+    list-style: none;
+    margin: 0;
+    padding-left: 5px;
+}
+
+li {
+    color: #000000;
+    border-radius: 4px;
+    background: #ffffff;
+    display: block;
+    float: left;
+    padding: 0 10px 15px;
+    position: relative;
+    text-decoration: none;
+    transition-duration: 0.5s;
+}
+
+li a {
+    color: #000000;
+}
+
+li:hover {
+    background: #3C3F41;
+    cursor: pointer;
+}
+
+ul li ul {
+    background: orange;
+    visibility: hidden;
+    opacity: 0;
+    min-width: 7rem;
+    position: absolute;
+    transition: all 0.5s ease;
+    margin-top: 1rem;
+    left: 0;
+    display: none;
+}
+
+ul li:hover > ul,
+ul li ul:hover {
+    visibility: visible;
+    opacity: 1;
+    margin-top: 3px;
+    display: block;
+}
+
+ul li ul li {
+    clear: both;
+    width: 100%;
+}
+
+ul li {
+    padding-top: 5px;
+    padding-bottom: 10px;
+}

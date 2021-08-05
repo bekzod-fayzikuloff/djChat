@@ -19,7 +19,7 @@
             <div class="profile-bio">
                 <p>{{ profile.bio }}</p>
                 {% if not this_profile_user %}
-                    <a href="{% url 'users:private_message' profile.user.id %}">start dialog</a>
+                    <a href="{% url 'users:private_message' profile.user.id %}"><button id="send-button">start dialog</button></a>
                 {% endif %}
             </div>
         </div>
