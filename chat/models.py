@@ -10,7 +10,7 @@ class Message(models.Model):
                               verbose_name='Отправитель',
                               related_name='message',
                               on_delete=models.CASCADE)
-    text = models.TextField('Сообщение', max_length=2000)
+    text = models.TextField('Сообщение', max_length=2000, blank=False)
     photo = models.ImageField('Изображение',
                               upload_to='messages/%Y/%m/%d',
                               blank=True)

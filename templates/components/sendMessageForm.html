@@ -1,7 +1,7 @@
 <div class="root-message">
     <div class="message-wrapper">
         <div style="margin-left: 5px ;width: 50px">
-            <p id="image-select"></p>
+            <p id="video-select"></p>
         </div>
         <div style="width: 100%">
             <form enctype="multipart/form-data" id="send-message" action="" method="POST" name="message">
@@ -11,27 +11,29 @@
                 </label>
 
                 {% for field in message_form %}
-                    {{ field }}
+                {{ field }}
                 {% endfor %}
                 <div class="button-wrapper">
                     <button id="send-button" type="submit">Send</button>
                 </div>
             </form>
         </div>
-{#        <div class="member-leave">#}
-{#            <p><a href="{% url 'chat:member_leave' user.pk chat.slug %}">&equiv;</a></p>#}
-{#        </div>#}
 
-    <nav role="navigation">
-  <ul>
-    <li <a href="#">&equiv;</a>
-      <ul class="dropdown">
-        <li><a href="#">Sub-1</a></li>
-        <li><a href="{% url 'chat:member_leave' user.pk chat.slug %}">Leave</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+        <div style="margin-left: 5px ;width: 50px">
+            <p id="image-select"></p>
+        </div>
+
+        <nav role="navigation">
+            <ul>
+                <li
+                <a href="#">&equiv;</a>
+                <ul class="dropdown">
+                    <li><a href="#">Sub-1</a></li>
+                    <li><a href="{% url 'chat:member_leave' user.pk chat.slug %}">Leave</a></li>
+                </ul>
+                </li>
+            </ul>
+        </nav>
 
     </div>
 </div>

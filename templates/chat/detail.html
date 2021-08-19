@@ -16,7 +16,14 @@
                                                                                        alt="message"></a></div>
                     {% endif %}
                     {% if message.voice %}
-                        <video autoplay="autoplay" src="{{ message.voice.url }}"></video>
+                    <div class="message-file" >
+                        <div class="file_link_block">
+                            <a href="{{ message.voice.url }}">
+                                <div class="file_icon"></div>
+                                <div><p>{{ message.voice.name }}</div>
+                            </a>
+                        </div>
+                    </div>
                     {% endif %}
                     <p class="message-text">{{ message.text }}</p>
                     <p class="time">{{ message.created|time:"H:i" }}</p>
@@ -47,6 +54,10 @@
 
         document.querySelector('#image-select').addEventListener('click', () => {
             document.querySelector('#id_message-photo').click()
+        })
+
+        document.querySelector('#video-select').addEventListener('click', () => {
+            document.querySelector('.message-video-input').click()
         })
     </script>
 
