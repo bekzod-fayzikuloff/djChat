@@ -15,7 +15,8 @@ body {
 
 header {
     color: whitesmoke;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
     padding: 20px;
     font-weight: 700;
     background: #17212B;
@@ -74,14 +75,12 @@ header .auth{
     font-size: 24px;
     font-weight: 600;
     transition: .5s;
+
+    color: #000
 }
 
 .chat-list:hover {
     background-color: #fff;
-}
-
-.chat-list a {
-    color: #000
 }
 
 .detail-content {

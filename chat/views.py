@@ -15,7 +15,7 @@ def index(request):
         queryset = services.chat_search_get_method(request=request)
         if request.is_ajax():
             return JsonResponse({'chats': queryset}, safe=False)
-    return render(request, 'chat/index.html', {'member_data': member_data})
+    return render(request, 'chat/index.html', {'members_data': member_data})
 
 
 @login_required

@@ -1,8 +1,21 @@
+{% load user_profile_tags %}
 <header>
     <a href="{% url 'chat:home' %}"><p>SimpleChat</p></a>
 
     {% if user.is_authenticated %}
         <a class="auth" href="{% url 'account_logout' %}">LogOut</a>
+        <a class="auth" href="#">
+            {% get_user_profile user as user_profile %}
+            {% if user_profile.photo %}
+                <div class="user-profile">
+                    <img class="profile-image" src="{{ user_profile.photo.url }}" alt="{{ user_profile }}">
+                </div>
+            {% else %}
+                <div class="user-profile">
+                    <img class="profile-image" src="sas" alt="{{ user_profile }}">
+                </div>
+            {% endif %}
+        </a>
     {% else %}
         <a class="auth" href="{% url 'account_login' %}">LogIn</a>
     {% endif %}

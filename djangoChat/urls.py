@@ -1,3 +1,4 @@
+import debug_toolbar
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
@@ -8,6 +9,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('users/', include('accounts.urls', namespace='users')),
+    path('__debug__/', include(debug_toolbar.urls)),
     path('', include('chat.urls', namespace='chat'))
 ]
 

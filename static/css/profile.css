@@ -45,3 +45,13 @@
 .profile-bio {
     text-transform: capitalize;
 }
+
+.user-profile {
+    width: 30px;
+    height: 30px;
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+}

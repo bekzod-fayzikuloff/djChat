@@ -18,7 +18,7 @@ $(document).ready(() => {
 
                 let chats = response.chats;
                 for (let chatId in chats) {
-                    htmlTemplate += `<div class='chat-list search'><a href="${chats[chatId].slug}">${chats[chatId].name}</a></div>`
+                    htmlTemplate += `<a href="${chats[chatId].slug}"><div class='chat-list search'>${chats[chatId].name}</div></a>`
                 }
                 if (htmlTemplate.includes('undefined')) {
                     htmlTemplate = "<strong> По данному запросу не найденно подходящих результатов </strong>"

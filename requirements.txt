@@ -3,3 +3,4 @@ python-dotenv~=0.17.1
 Pillow
 django-allauth
 psycopg2
+django-debug-toolbar~=3.2.2

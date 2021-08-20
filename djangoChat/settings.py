@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.vk',
+    'debug_toolbar',
     'accounts.apps.AccountsConfig',
     'chat.apps.ChatConfig',
 ]
@@ -48,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'djangoChat.urls'
@@ -143,3 +145,5 @@ LOGIN_REDIRECT_URL = 'chat:home'
 LOGOUT_REDIRECT_URL = 'chat:home'
 
 SITE_ID = 1
+
+INTERNAL_IPS = ['127.0.0.1', ]
