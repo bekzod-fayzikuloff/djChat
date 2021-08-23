@@ -5,7 +5,7 @@ from django.urls import reverse
 
 
 class Message(models.Model):
-    """ Модель сообщения """
+    """ Message model """
     owner = models.ForeignKey(User,
                               verbose_name='Отправитель',
                               related_name='message',
@@ -36,7 +36,7 @@ class Message(models.Model):
 
 
 class Member(models.Model):
-    """ Связующая модель для соединения пользователя с чатами """
+    """ Model for relating user to chat """
     user = models.ForeignKey(User,
                              verbose_name='Пользователь',
                              on_delete=models.CASCADE)
@@ -53,7 +53,7 @@ class Member(models.Model):
 
 
 class Chat(models.Model):
-    """ Модель чата """
+    """ Chat model """
     name = models.CharField('Название', max_length=120)
     description = models.TextField('Описание',
                                    max_length=1000,

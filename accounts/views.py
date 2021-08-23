@@ -8,6 +8,7 @@ from .forms import PrivateMessageForm
 
 
 def user_profile(request, pk):
+    """ user profile handling view """
     this_profile_user = False
     profile = services.get_user_profile_by_user_pk(pk=pk)
     if profile.user == request.user:
@@ -18,16 +19,24 @@ def user_profile(request, pk):
 
 
 class PrivateMessageView(View):
+    """ PrivateMessage page handling view """
     form = PrivateMessageForm
     template_name = 'user/messages.html'
 
     def get(self, request, *args, **kwargs):
+        """
+            Django.views.View based class get method calling when request will send on GET method
+        """
         to_user = get_object_or_404(User, pk=kwargs.get('pk'))
         queryset = MessageReference.objects.filter(message_to__in=[request.user, to_user])
         form = self.form()
         return render(request, self.template_name, {'messages': queryset, 'form': form})
 
     def post(self, request, *args, **kwargs):
+        """
+            Django.views.View based class get method calling when request will send on POST method
+            (for example when we want to save some data from page forms)
+        """
         to_user = get_object_or_404(User, pk=kwargs.get('pk'))
         if 'message' in request.POST:  # processing a request for a message form
             form = self.form(request.POST, request.FILES)

@@ -17,6 +17,7 @@ header {
     color: whitesmoke;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 20px;
     font-weight: 700;
     background: #17212B;

@@ -3,14 +3,14 @@ from . import models
 
 
 class MemberChatForm(forms.ModelForm):
-
+    """ Class for forms which adding member to chat """
     class Meta:
         model = models.Member
         fields = []
 
 
 class MessageSendForm(forms.ModelForm):
-
+    """ Class for forms which using for adding message to chat """
     class Meta:
         model = models.Message
         fields = ['text', 'photo', 'voice']

@@ -5,6 +5,7 @@ from django.dispatch import receiver
 
 
 class Profile(models.Model):
+    """ Create Profile form for adding some customize fields"""
     user = models.OneToOneField(User,
                                 verbose_name='Пользователь',
                                 on_delete=models.CASCADE)
@@ -35,6 +36,7 @@ def save_user_profile(sender, instance, **kwargs):
 
 
 class MessagePrivate(models.Model):
+    """ Crete MessagePrivate model for sending message private """
     text = models.TextField('Сообщение', max_length=2000)
     photo = models.ImageField('Изображение',
                               upload_to='private/messages/%Y/%m/%d',
@@ -51,6 +53,7 @@ class MessagePrivate(models.Model):
 
 
 class MessageReference(models.Model):
+    """ Model which using for relating message_from_user, message, and message_to_user"""
     message_from = models.ForeignKey(User,
                                      verbose_name='Отправитель',
                                      related_name='message_from',

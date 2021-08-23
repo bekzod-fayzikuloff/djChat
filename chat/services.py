@@ -28,12 +28,14 @@ def get_chat_messages(chat_slug) -> QuerySet:
 
 
 def link_member(member: Member, user, chat: Chat) -> Member:
+    """ function for relating Member model obj with user and chat fields """
     member.user = user
     member.chat = chat
     return member
 
 
 def chat_search_get_method(request) -> list or str:
+    """ function for searching chat on database with some fields constraints """
     query = request.GET.get('q', None)
     if query:
         object_lists = list(Chat.objects.filter(

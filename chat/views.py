@@ -10,6 +10,7 @@ from . import services
 
 @login_required
 def index(request):
+    """ view for render `index` page """
     member_data = services.get_user_chats(request.user)
     if request.method == 'GET':
         queryset = services.chat_search_get_method(request=request)
@@ -55,6 +56,7 @@ def chat_detail(request, slug):
 
 
 class MemberLeaveView(View):
+    """ class for realize user leaving from some chat """
 
     def get(self, request, *args, **kwargs):
         chat = get_object_or_404(Chat, slug=kwargs.get('chat_slug'))
