@@ -7,7 +7,8 @@
     <div class="detail-content">
         <div class="message">
             {% for message in messages %}
-                <div class="message-box">
+                {% if message.owner == user %}
+                <div class="message-box right">
                     <a href="{% url 'users:user_profile' message.owner.pk %}"><span>{{ message.owner.username }}</span></a>
                     <hr>
                     {% if message.photo %}
@@ -29,6 +30,30 @@
                     <p class="time">{{ message.created|time:"H:i" }}</p>
 
                 </div>
+            {% else %}
+            <div class="message-box">
+                    <a href="{% url 'users:user_profile' message.owner.pk %}"><span>{{ message.owner.username }}</span></a>
+                    <hr>
+                    {% if message.photo %}
+                        <div id="message-image"><a href="{{ message.photo.url }}"><img class="message-photo"
+                                                                                       src="{{ message.photo.url }}"
+                                                                                       alt="message"></a></div>
+                    {% endif %}
+                    {% if message.voice %}
+                    <div class="message-file" >
+                        <div class="file_link_block">
+                            <a href="{{ message.voice.url }}">
+                                <div class="file_icon"></div>
+                                <div><p>{{ message.voice.name }}</div>
+                            </a>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <p class="message-text">{{ message.text }}</p>
+                    <p class="time">{{ message.created|time:"H:i" }}</p>
+
+                </div>
+            {% endif %}
             {% endfor %}
         </div>
         {% if is_member %}

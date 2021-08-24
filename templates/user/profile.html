@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load user_profile_tags %}
 
 {% block title %} {{ profile.user.username }} {% endblock %}
 
@@ -20,6 +21,11 @@
                 <p>{{ profile.bio }}</p>
                 {% if not this_profile_user %}
                     <a href="{% url 'users:private_message' profile.user.id %}"><button id="send-button">start dialog</button></a>
+                {% else %}
+                    {% get_profile_private_chats user as profile_pc %}
+                    {% for pc in profile_pc %}
+                        <p>Jopa</p>
+                    {% endfor %}
                 {% endif %}
             </div>
         </div>

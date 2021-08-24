@@ -7,13 +7,17 @@
         <a class="auth" href="#">
             {% get_user_profile user as user_profile %}
             {% if user_profile.photo %}
+            <a href="{% url 'users:user_profile'  user_profile.user.pk %}">
                 <div class="user-profile">
                     <img class="profile-image" src="{{ user_profile.photo.url }}" alt="{{ user_profile }}">
                 </div>
+            </a>
             {% else %}
+            <a href="{{ user_profile.user.get_absolute_url }}">
                 <div class="user-profile">
                     <img class="profile-image" src="sas" alt="{{ user_profile }}">
                 </div>
+            </a>
             {% endif %}
         </a>
     {% else %}

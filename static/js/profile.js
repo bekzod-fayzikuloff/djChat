@@ -1,3 +1,3 @@
-document.querySelector('.user-profile').addEventListener('click', () => {
-    alert('Vzlom Jopi')
-})
+//document.querySelector('.user-profile').addEventListener('click', () => {
+//    alert('Vzlom Jopi')
+//})

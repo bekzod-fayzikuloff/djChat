@@ -5,17 +5,31 @@
 {% block content %}
     <div class="detail-content">
         {% for message in messages %}
-            <div class="message-box">
-                <a href="#"><span>{{ message.message_from.username }}</span></a>
-                <hr>
-                {% if message.message.photo %}
-                    <div id="message-image"><a href="{{ message.message.photo.url }}"><img class="message-photo"
+            {% if message.message_from == user %}
+                <div class="message-box right">
+                    <a href="#"><span>{{ message.message_from.username }}</span></a>
+                    <hr>
+                    {% if message.message.photo %}
+                        <div id="message-image"><a href="{{ message.message.photo.url }}"><img class="message-photo"
                                                                                            src="{{ message.message.photo.url }}"
                                                                                            alt="message"></a></div>
-                {% endif %}
-                <p class="message-text">{{ message.message.text }}</p>
-                <p class="time">{{ message.message.created|time:"H:i" }}</p>
-            </div>
+                    {% endif %}
+                    <p class="message-text">{{ message.message.text }}</p>
+                    <p class="time">{{ message.message.created|time:"H:i" }}</p>
+                </div>
+            {% else %}
+                <div class="message-box">
+                    <a href="#"><span>{{ message.message_from.username }}</span></a>
+                    <hr>
+                    {% if message.message.photo %}
+                        <div id="message-image"><a href="{{ message.message.photo.url }}"><img class="message-photo"
+                                                                                           src="{{ message.message.photo.url }}"
+                                                                                           alt="message"></a></div>
+                    {% endif %}
+                    <p class="message-text">{{ message.message.text }}</p>
+                    <p class="time">{{ message.message.created|time:"H:i" }}</p>
+                </div>
+            {% endif %}
         {% endfor %}
         <div class="root-message">
             <div class="message-wrapper">
